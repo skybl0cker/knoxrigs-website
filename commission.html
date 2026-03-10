@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Build | Knox Rigs</title>
+    <meta name="description" content="Select a pre-configured tier or customize your own custom PC build.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="commission-page">
+    <nav class="navbar glass-nav">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">Knox<span>Rigs</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#about">Our Story</a></li>
+            <li><a href="commission.html" class="btn-primary btn-small">Get Started</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </div>
+    </nav>
+
+    <header class="page-header mt-nav">
+        <div class="header-glow"></div>
+        <div class="container reveal">
+            <h1 class="glow-text text-center">Commission Your Build</h1>
+            <p class="text-center subtitle">Choose a proven configuration or specify your exact parts below.</p>
+        </div>
+    </header>
+
+    <section class="tiers-section pt-0">
+        <div class="container">
+            <div class="tiers-grid reveal">
+                <div class="tier-card glass-panel hover-glow" onclick="selectTier('Entry-Level 1080p')">
+                    <div class="tier-badge">Entry-Level</div>
+                    <h3>1080p Champion</h3>
+                    <p class="tier-desc">Perfect for competitive e-sports and smooth 1080p gaming on modern titles.</p>
+                    <div class="tier-price">~$800 <span>parts total</span></div>
+                    <ul class="tier-specs">
+                        <li><span class="spec-label">GPU</span> <span class="spec-value target-amd">RX 7600</span> /
+                            <span class="spec-value target-nvidia">RTX 4060</span></li>
+                        <li><span class="spec-label">CPU</span> <span class="spec-value">Ryzen 5 5600</span> / <span
+                                class="spec-value">i5-12400F</span></li>
+                        <li><span class="spec-label">RAM</span> <span class="spec-value">16GB DDR4 3200MHz</span></li>
+                        <li><span class="spec-label">Storage</span> <span class="spec-value">1TB NVMe SSD</span></li>
+                    </ul>
+                    <button class="btn-secondary w-full mt-4 tier-btn">Select This Build</button>
+                </div>
+
+                <div class="tier-card glass-panel highlight-gradient hover-glow active-tier"
+                    onclick="selectTier('Mid-Range 1440p')">
+                    <div class="tier-badge popular-badge">Most Popular</div>
+                    <h3>1440p Sweet Spot</h3>
+                    <p class="tier-desc">The ideal balance of price and performance. Crushes 1440p gaming at high
+                        refresh rates.</p>
+                    <div class="tier-price">~$1,500 <span>parts total</span></div>
+                    <ul class="tier-specs">
+                        <li><span class="spec-label">GPU</span> <span class="spec-value target-nvidia">RTX 4070
+                                Super</span> / <span class="spec-value target-amd">RX 7800 XT</span></li>
+                        <li><span class="spec-label">CPU</span> <span class="spec-value">Ryzen 5 7600X</span> / <span
+                                class="spec-value">i5-13600K</span></li>
+                        <li><span class="spec-label">RAM</span> <span class="spec-value">32GB DDR5 6000MHz</span></li>
+                        <li><span class="spec-label">Storage</span> <span class="spec-value">2TB Gen4 NVMe SSD</span>
+                        </li>
+                    </ul>
+                    <button class="btn-primary w-full mt-4 tier-btn">Select This Build</button>
+                </div>
+
+                <div class="tier-card glass-panel hover-glow" onclick="selectTier('High-End 4K')">
+                    <div class="tier-badge elite-badge">Enthusiast</div>
+                    <h3>4K Dominator</h3>
+                    <p class="tier-desc">No compromises. Maximum settings at 4K resolution, heavy rendering, and
+                        streaming.</p>
+                    <div class="tier-price">~$2,500+ <span>parts total</span></div>
+                    <ul class="tier-specs">
+                        <li><span class="spec-label">GPU</span> <span class="spec-value target-nvidia">RTX 4080
+                                Super</span> / <span class="spec-value target-amd">RX 7900 XTX</span></li>
+                        <li><span class="spec-label">CPU</span> <span class="spec-value">Ryzen 7 7800X3D</span> / <span
+                                class="spec-value">i9-14900K</span></li>
+                        <li><span class="spec-label">RAM</span> <span class="spec-value">64GB DDR5 6000MHz</span></li>
+                        <li><span class="spec-label">Storage</span> <span class="spec-value">4TB Gen4 NVMe SSD</span>
+                        </li>
+                    </ul>
+                    <button class="btn-secondary w-full mt-4 tier-btn">Select This Build</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section pt-0" id="commission-form">
+        <div class="container reveal">
+            <div class="form-container glass-panel form-glow">
+                <h2 class="form-title">Build Request Form</h2>
+                <p class="form-subtitle">Fill out your details below. You can base your build off a tier above, or
+                    specify exactly what you want.</p>
+
+                <form id="commissionForm" action="https://formspree.io/f/xlgpjewn" method="POST"
+                    class="commission-form">
+
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="Name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Contact Email Address *</label>
+                        <input type="email" id="email" name="Email" required placeholder="john@example.com">
+                        <small style="color: var(--text-muted); margin-top: 0.25rem;">We need an email so we can reply
+                            to you with a quote.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="baseBuild">Base Build Configuration</label>
+                        <select id="baseBuild" name="Base Build">
+                            <option value="Custom - I'll specify below">Custom (I will specify parts below)</option>
+                            <option value="Entry-Level 1080p">Entry-Level 1080p (~$800 parts)</option>
+                            <option value="Mid-Range 1440p">Mid-Range 1440p (~$1,500 parts)</option>
+                            <option value="High-End 4K">High-End 4K (~$2,500+ parts)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Total Parts Budget ($) *</label>
+                        <input type="number" id="budget" name="Budget" required placeholder="e.g. 1500">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="customParts">Custom Parts / Specific Requests</label>
+                        <textarea id="customParts" name="Parts Request" rows="5"
+                            placeholder="List any specific parts you want (e.g. 'I want the Lian Li O11 Dynamic case and RGB fans' or 'Here is my PCPartPicker link: ...')"></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="useCase">Primary Use Case</label>
+                        <textarea id="useCase" name="Use Case" rows="3"
+                            placeholder="Gaming, Video Editing, Streaming, etc. Please list the main games or software you use."></textarea>
+                    </div>
+
+                    <div class="form-actions full-width mt-4">
+                        <button type="submit" id="submitBtn" class="btn-primary large-btn w-full">Submit Build
+                            Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <div class="modal-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h3>Request Received!</h3>
+            <p>Thanks for reaching out! We've received your build request and will email you back shortly to discuss
+                your new Knox Rig.</p>
+            <button class="btn-primary" onclick="closeModal()">Close & Return Home</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                Knox<span>Rigs</span>
+            </div>
+            <p>&copy; 2026 Knox Rigs.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function selectTier(tierName) {
+            const selectElement = document.getElementById('baseBuild');
+            if (selectElement) {
+                selectElement.value = tierName;
+                document.getElementById('commission-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                selectElement.style.boxShadow = '0 0 15px rgba(56, 189, 248, 0.5)';
+                setTimeout(() => { selectElement.style.boxShadow = 'none'; }, 1000);
+            }
+        }
+
+        const form = document.getElementById('commissionForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const modal = document.getElementById('successModal');
+
+        if (form) {
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const originalText = submitBtn.innerText;
+                submitBtn.innerText = 'Sending Request...';
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.7';
+
+                const data = new FormData(form);
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        form.reset();
+                        modal.classList.add('active');
+                        submitBtn.innerText = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = '1';
+                    } else {
+                        throw new Error('Formspree returned an error');
+                    }
+                } catch (error) {
+                    alert('Oops! There was a problem submitting your form. Please try again or email us directly at cashegley@gmail.com');
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }
+            });
+        }
+
+        function closeModal() {
+            if (modal) {
+                modal.classList.remove('active');
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+
+</html>
