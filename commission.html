@@ -8,7 +8,7 @@
     <meta name="description" content="Select a pre-configured tier or customize your own custom PC build.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -37,17 +37,17 @@
     <header class="page-header mt-nav">
         <div class="header-glow"></div>
         <div class="container reveal">
-            <h1 class="glow-text text-center">Commission Your Build</h1>
-            <p class="text-center subtitle">Choose a proven configuration or specify your exact parts below.</p>
+            <h1 class="glow-text text-center">Let's Get Started.</h1>
+            <p class="text-center subtitle">Choose a solid baseline or specify exactly what you're looking for.</p>
         </div>
     </header>
 
     <section class="tiers-section pt-0">
         <div class="container">
             <div class="tiers-grid reveal">
-                <div class="tier-card glass-panel hover-glow" onclick="selectTier('Entry-Level 1080p')">
+                <div class="tier-card glass-panel hover-glow" onclick="selectTier('The Starter ($800)')">
                     <div class="tier-badge">Entry-Level</div>
-                    <h3>1080p Champion</h3>
+                    <h3>The Starter</h3>
                     <p class="tier-desc">Perfect for competitive e-sports and smooth 1080p gaming on modern titles.</p>
                     <div class="tier-price">~$800 <span>parts total</span></div>
                     <ul class="tier-specs">
@@ -63,9 +63,9 @@
                 </div>
 
                 <div class="tier-card glass-panel highlight-gradient hover-glow active-tier"
-                    onclick="selectTier('Mid-Range 1440p')">
+                    onclick="selectTier('The Sweet Spot ($1,500)')">
                     <div class="tier-badge popular-badge">Most Popular</div>
-                    <h3>1440p Sweet Spot</h3>
+                    <h3>The Sweet Spot</h3>
                     <p class="tier-desc">The ideal balance of price and performance. Crushes 1440p gaming at high
                         refresh rates.</p>
                     <div class="tier-price">~$1,500 <span>parts total</span></div>
@@ -81,11 +81,10 @@
                     <button class="btn-primary w-full mt-4 tier-btn">Select This Build</button>
                 </div>
 
-                <div class="tier-card glass-panel hover-glow" onclick="selectTier('High-End 4K')">
+                <div class="tier-card glass-panel hover-glow" onclick="selectTier('The Behemoth ($2,500+)')">
                     <div class="tier-badge elite-badge">Enthusiast</div>
-                    <h3>4K Dominator</h3>
-                    <p class="tier-desc">No compromises. Maximum settings at 4K resolution, heavy rendering, and
-                        streaming.</p>
+                    <h3>The Behemoth</h3>
+                    <p class="tier-desc">No compromises. Max settings at 4K resolution, heavy rendering, or streaming.</p>
                     <div class="tier-price">~$2,500+ <span>parts total</span></div>
                     <ul class="tier-specs">
                         <li><span class="spec-label">GPU</span> <span class="spec-value target-nvidia">RTX 4080
@@ -105,9 +104,8 @@
     <section class="form-section pt-0" id="commission-form">
         <div class="container reveal">
             <div class="form-container glass-panel form-glow">
-                <h2 class="form-title">Build Request Form</h2>
-                <p class="form-subtitle">Fill out your details below. You can base your build off a tier above, or
-                    specify exactly what you want.</p>
+                <h2 class="form-title">Tell Us What You Need</h2>
+                <p class="form-subtitle">Drop your details below. You can base it off a tier above, or hit us with exactly what you want.</p>
 
                 <form id="commissionForm" action="https://formspree.io/f/xlgpjewn" method="POST"
                     class="commission-form">
@@ -130,9 +128,9 @@
                         <label for="baseBuild">Base Build Configuration</label>
                         <select id="baseBuild" name="Selected Build Tier">
                             <option value="Custom - I'll specify below">Custom (I will specify parts below)</option>
-                            <option value="Entry-Level 1080p">Entry-Level 1080p (~$800 parts)</option>
-                            <option value="Mid-Range 1440p">Mid-Range 1440p (~$1,500 parts)</option>
-                            <option value="High-End 4K">High-End 4K (~$2,500+ parts)</option>
+                            <option value="The Starter ($800)">The Starter (~$800 parts)</option>
+                            <option value="The Sweet Spot ($1,500)">The Sweet Spot (~$1,500 parts)</option>
+                            <option value="The Behemoth ($2,500+)">The Behemoth (~$2,500+ parts)</option>
                         </select>
                     </div>
 
