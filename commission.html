@@ -52,7 +52,8 @@
                     <div class="tier-price">~$800 <span>parts total</span></div>
                     <ul class="tier-specs">
                         <li><span class="spec-label">GPU</span> <span class="spec-value target-amd">RX 7600</span> /
-                            <span class="spec-value target-nvidia">RTX 4060</span></li>
+                            <span class="spec-value target-nvidia">RTX 4060</span>
+                        </li>
                         <li><span class="spec-label">CPU</span> <span class="spec-value">Ryzen 5 5600</span> / <span
                                 class="spec-value">i5-12400F</span></li>
                         <li><span class="spec-label">RAM</span> <span class="spec-value">16GB DDR4 3200MHz</span></li>
@@ -171,8 +172,8 @@
                 </svg>
             </div>
             <h3>Request Received!</h3>
-            <p>Thanks for reaching out! We've received your build request and will email you back shortly to discuss
-                your new Knox Rig.</p>
+            <p>Thanks for reaching out! We've received your build request. Please allow <strong>24-48 hours</strong> for
+                us to get back to you.</p>
             <button class="btn-primary" onclick="closeModal()">Close & Return Home</button>
         </div>
     </div>
@@ -194,24 +195,24 @@
             const customPartsArea = document.getElementById('customParts');
             const budgetGroup = document.getElementById('budgetGroup');
             const customPartsGroup = document.getElementById('customPartsGroup');
-            
+
             if (buildSelect && budgetInput && customPartsArea) {
                 if (buildSelect.value === "Custom - I'll specify below") {
                     budgetInput.disabled = false;
                     budgetInput.required = true;
                     customPartsArea.disabled = false;
-                    
-                    if(budgetGroup) budgetGroup.style.opacity = '1';
-                    if(customPartsGroup) customPartsGroup.style.opacity = '1';
+
+                    if (budgetGroup) budgetGroup.style.opacity = '1';
+                    if (customPartsGroup) customPartsGroup.style.opacity = '1';
                 } else {
                     budgetInput.disabled = true;
                     budgetInput.required = false;
                     budgetInput.value = ''; // Not applicable when prebuilt
                     customPartsArea.disabled = true;
                     customPartsArea.value = ''; // Not applicable
-                    
-                    if(budgetGroup) budgetGroup.style.opacity = '0.35';
-                    if(customPartsGroup) customPartsGroup.style.opacity = '0.35';
+
+                    if (budgetGroup) budgetGroup.style.opacity = '0.35';
+                    if (customPartsGroup) customPartsGroup.style.opacity = '0.35';
                 }
             }
         }
@@ -267,7 +268,7 @@
                         throw new Error('Formspree returned an error');
                     }
                 } catch (error) {
-                    alert('Oops! There was a problem submitting your form. Please try again or email us directly at sales@knoxrigs.com');
+                    alert('Oops! There was a problem submitting your form. Please try again or email us directly at cashegley@gmail.com');
                     submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
                     submitBtn.style.opacity = '1';
