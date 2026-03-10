@@ -111,21 +111,23 @@
                 <form id="commissionForm" action="https://formspree.io/f/xlgpjewn" method="POST"
                     class="commission-form">
 
-                    <div class="form-group">
+                    <input type="hidden" name="_subject" value="New PC Build Request from Knox Rigs">
+
+                    <div class="form-group" style="transition: opacity 0.3s ease;">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="Name" required placeholder="John Doe">
+                        <input type="text" id="name" name="Full Name" required placeholder="John Doe">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" style="transition: opacity 0.3s ease;">
                         <label for="email">Contact Email Address *</label>
-                        <input type="email" id="email" name="Email" required placeholder="john@example.com">
+                        <input type="email" id="email" name="Email Address" required placeholder="john@example.com">
                         <small style="color: var(--text-muted); margin-top: 0.25rem;">We need an email so we can reply
                             to you with a quote.</small>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" style="transition: opacity 0.3s ease;">
                         <label for="baseBuild">Base Build Configuration</label>
-                        <select id="baseBuild" name="Base Build">
+                        <select id="baseBuild" name="Selected Build Tier">
                             <option value="Custom - I'll specify below">Custom (I will specify parts below)</option>
                             <option value="Entry-Level 1080p">Entry-Level 1080p (~$800 parts)</option>
                             <option value="Mid-Range 1440p">Mid-Range 1440p (~$1,500 parts)</option>
@@ -133,20 +135,20 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="budgetGroup" style="transition: opacity 0.3s ease;">
                         <label for="budget">Total Parts Budget ($) *</label>
-                        <input type="number" id="budget" name="Budget" required placeholder="e.g. 1500">
+                        <input type="number" id="budget" name="Parts Budget" required placeholder="e.g. 1500">
                     </div>
 
-                    <div class="form-group full-width">
+                    <div class="form-group full-width" id="customPartsGroup" style="transition: opacity 0.3s ease;">
                         <label for="customParts">Custom Parts / Specific Requests</label>
-                        <textarea id="customParts" name="Parts Request" rows="5"
+                        <textarea id="customParts" name="Custom Parts Requests" rows="5"
                             placeholder="List any specific parts you want (e.g. 'I want the Lian Li O11 Dynamic case and RGB fans' or 'Here is my PCPartPicker link: ...')"></textarea>
                     </div>
 
-                    <div class="form-group full-width">
+                    <div class="form-group full-width" style="transition: opacity 0.3s ease;">
                         <label for="useCase">Primary Use Case</label>
-                        <textarea id="useCase" name="Use Case" rows="3"
+                        <textarea id="useCase" name="Primary Use Case" rows="3"
                             placeholder="Gaming, Video Editing, Streaming, etc. Please list the main games or software you use."></textarea>
                     </div>
 
@@ -186,14 +188,49 @@
 
     <script src="script.js"></script>
     <script>
+        function toggleCustomFields() {
+            const buildSelect = document.getElementById('baseBuild');
+            const budgetInput = document.getElementById('budget');
+            const customPartsArea = document.getElementById('customParts');
+            const budgetGroup = document.getElementById('budgetGroup');
+            const customPartsGroup = document.getElementById('customPartsGroup');
+            
+            if (buildSelect && budgetInput && customPartsArea) {
+                if (buildSelect.value === "Custom - I'll specify below") {
+                    budgetInput.disabled = false;
+                    budgetInput.required = true;
+                    customPartsArea.disabled = false;
+                    
+                    if(budgetGroup) budgetGroup.style.opacity = '1';
+                    if(customPartsGroup) customPartsGroup.style.opacity = '1';
+                } else {
+                    budgetInput.disabled = true;
+                    budgetInput.required = false;
+                    budgetInput.value = ''; // Not applicable when prebuilt
+                    customPartsArea.disabled = true;
+                    customPartsArea.value = ''; // Not applicable
+                    
+                    if(budgetGroup) budgetGroup.style.opacity = '0.35';
+                    if(customPartsGroup) customPartsGroup.style.opacity = '0.35';
+                }
+            }
+        }
+
         function selectTier(tierName) {
             const selectElement = document.getElementById('baseBuild');
             if (selectElement) {
                 selectElement.value = tierName;
+                toggleCustomFields();
                 document.getElementById('commission-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 selectElement.style.boxShadow = '0 0 15px rgba(56, 189, 248, 0.5)';
                 setTimeout(() => { selectElement.style.boxShadow = 'none'; }, 1000);
             }
+        }
+
+        const selectEl = document.getElementById('baseBuild');
+        if (selectEl) {
+            selectEl.addEventListener('change', toggleCustomFields);
+            toggleCustomFields(); // Set initial state
         }
 
         const form = document.getElementById('commissionForm');
