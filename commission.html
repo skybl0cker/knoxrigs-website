@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             display: flex;
             flex-direction: column;
         }
+
         .config-main {
             background: var(--bg-surface);
             border: 1px solid var(--border-action);
@@ -24,11 +26,12 @@
         }
     </style>
 </head>
+
 <body>
     <canvas id="particles-bg"></canvas>
 
     <div class="app-container">
-        
+
         <!-- SIDEBAR NAVIGATION -->
         <aside class="config-sidebar">
             <div class="brand">
@@ -43,18 +46,21 @@
             </select>
 
             <ul class="nav-menu">
-                <li class="nav-item active" onclick="switchView('prebuilts', this)">> Select Prebuilt Base</li>
-                <li class="nav-item" onclick="switchView('custom', this)">> Start Custom Build</li>
+                <li class="nav-item active" onclick="window.location.href='commission.html?view=prebuilts'">> Select
+                    Prebuilt Base</li>
+                <li class="nav-item" onclick="window.location.href='commission.html?view=custom'">> Start Custom Build
+                </li>
             </ul>
 
             <div class="sidebar-footer" style="margin-top: auto;">
-                <a href="index.html" class="return-link" style="display: block; margin-top: 1rem;">< Return to Home</a>
+                <a href="index.html" class="return-link" style="display: block; margin-top: 1rem;">
+                    Return to Home</a>
             </div>
         </aside>
 
         <!-- MAIN STAGE -->
         <main class="config-main">
-            
+
             <!-- VIEW: PREBUILTS -->
             <section id="view-prebuilts" class="view-section active">
                 <div class="sys-header">
@@ -62,40 +68,278 @@
                 </div>
 
                 <div class="tier-wrapper">
-                    <div class="tier-sys">
+                    <!-- 1: Starter -->
+                    <div class="tier-sys" data-base-name="Starter" data-red-cost="$1000" data-blue-cost="$1000">
                         <div class="tier-title">The Starter</div>
-                        <div class="tier-cost">~$800</div>
-                        <ul class="spec-list">
-                            <li><span class="spec-label">GPU</span><span class="spec-val">RX 7600 / RTX 4060</span></li>
-                            <li><span class="spec-label">CPU</span><span class="spec-val">R5 5600 / i5-12400F</span></li>
-                            <li><span class="spec-label">MEM</span><span class="spec-val">16GB DDR4</span></li>
-                            <li><span class="spec-label">STRG</span><span class="spec-val">1TB NVMe</span></li>
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <button type="button" class="cmd-btn toggle-btn active"
+                                style="padding: 0.5rem; flex: 1; font-size: 0.8rem;"
+                                onclick="switchTierTeam(this, 'red')">AMD</button>
+                            <button type="button" class="cmd-btn cmd-btn-secondary toggle-btn"
+                                style="padding: 0.5rem; flex: 1; font-size: 0.8rem;"
+                                onclick="switchTierTeam(this, 'blue')">Intel</button>
+                        </div>
+                        <div class="tier-cost">$1000</div>
+
+                        <!-- AMD / RED -->
+                        <ul class="spec-list team-red">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD 5700</span>
+                            </li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val">Stock</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">XFX RX 7600</span>
+                            </li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Asus PRIME B550M-A
+                                    WIFI II</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">Silicon Power 16GB</span></li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">Patriot P300 512GB</span>
+                            </li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val">BGears b-Pellucid</span></li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">Corsair CX750M</span></li>
                         </ul>
-                        <button class="cmd-btn cmd-btn-secondary w-full" onclick="openPrebuiltModal('The Starter ($800)')">> Select Option</button>
+
+                        <!-- INTEL / BLUE -->
+                        <ul class="spec-list team-blue" style="display: none;">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-intel">Intel
+                                    i5-11400F</span></li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Thermalright Peerless
+                                    Assassin 120 SE</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-nvidia">MSI 3050
+                                    6gb</span></li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">ASRock H550 Micro
+                                    ATX</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">Silicon Power 16GB</span></li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">Silicon Power 512gb</span>
+                            </li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Cooler Master Master
+                                    Box Q300L</span></li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">Montech APX 650W</span></li>
+                        </ul>
+
+                        <button class="cmd-btn cmd-btn-secondary w-full tier-select-btn"
+                            onclick="openPrebuiltModal('Team Red Starter')">> Select Option</button>
                     </div>
 
-                    <div class="tier-sys recommended">
+                    <!-- 2: Sweet Spot -->
+                    <div class="tier-sys recommended" data-base-name="Sweet Spot" data-red-cost="$1350"
+                        data-blue-cost="$1350">
                         <div class="tier-title" style="color: var(--accent-orange);">The Sweet Spot</div>
-                        <div class="tier-cost">~$1,500</div>
-                        <ul class="spec-list">
-                            <li><span class="spec-label">GPU</span><span class="spec-val">4070S / RX 7800 XT</span></li>
-                            <li><span class="spec-label">CPU</span><span class="spec-val">R5 7600X / i5-13600K</span></li>
-                            <li><span class="spec-label">MEM</span><span class="spec-val">32GB DDR5</span></li>
-                            <li><span class="spec-label">STRG</span><span class="spec-val">2TB Gen4</span></li>
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <button type="button" class="cmd-btn toggle-btn active"
+                                style="padding: 0.5rem; flex: 1; font-size: 0.8rem;"
+                                onclick="switchTierTeam(this, 'red')">AMD</button>
+                            <button type="button" class="cmd-btn cmd-btn-secondary toggle-btn"
+                                style="padding: 0.5rem; flex: 1; font-size: 0.8rem;"
+                                onclick="switchTierTeam(this, 'blue')">Intel</button>
+                        </div>
+                        <div class="tier-cost">$1350</div>
+
+                        <!-- AMD / RED -->
+                        <ul class="spec-list team-red">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD 5800x3d</span>
+                            </li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">ARCTIC Liquid Freezer
+                                    III Pro 360</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">ASRock 9060xt
+                                    16gb</span></li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Gigabyte B550 Gaming
+                                    X</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">Silicon Power 16GB</span></li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">Silicon Power 1TB</span></li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val">NZXT H5 Flow</span></li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">Montech Century 850W</span>
+                            </li>
                         </ul>
-                        <button class="cmd-btn w-full" onclick="openPrebuiltModal('The Sweet Spot ($1,500)')">> Select Option</button>
+
+                        <!-- INTEL / BLUE -->
+                        <ul class="spec-list team-blue" style="display: none;">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-intel">Intel
+                                    i5-11600kf</span></li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Cooler Master
+                                    MasterLiquid 360L</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-nvidia">Gigabyte RTX
+                                    5060</span></li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Asus Prime B560 -
+                                    Plus</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">TeamGroup T-force 16gb</span>
+                            </li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">Crucial P310 1TB</span></li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val">Phanteck Eclipse G370A</span>
+                            </li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">MSI A850GL</span></li>
+                        </ul>
+
+                        <button class="cmd-btn w-full tier-select-btn"
+                            onclick="openPrebuiltModal('Team Red Sweet Spot')">> Select Option</button>
                     </div>
 
-                    <div class="tier-sys">
+                    <!-- 3: Behemoth -->
+                    <div class="tier-sys" data-base-name="Behemoth" data-red-cost="$2000" data-blue-cost="$2000">
                         <div class="tier-title">The Behemoth</div>
-                        <div class="tier-cost">~$2,500+</div>
-                        <ul class="spec-list">
-                            <li><span class="spec-label">GPU</span><span class="spec-val">4080S / RX 7900 XTX</span></li>
-                            <li><span class="spec-label">CPU</span><span class="spec-val">R7 7800X3D / i9-1490K</span></li>
-                            <li><span class="spec-label">MEM</span><span class="spec-val">64GB DDR5</span></li>
-                            <li><span class="spec-label">STRG</span><span class="spec-val">4TB Gen4</span></li>
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <button type="button" class="cmd-btn toggle-btn active"
+                                style="padding: 0.5rem; flex: 1; font-size: 0.8rem;"
+                                onclick="switchTierTeam(this, 'red')">AMD</button>
+                            <button type="button" class="cmd-btn cmd-btn-secondary toggle-btn"
+                                style="padding: 0.5rem; flex: 1; font-size: 0.8rem;"
+                                onclick="switchTierTeam(this, 'blue')">Intel</button>
+                        </div>
+                        <div class="tier-cost">$2000</div>
+
+                        <!-- AMD / RED -->
+                        <ul class="spec-list team-red">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD 9700X</span>
+                            </li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">ARCTIC Liquid Freezer
+                                    III Pro A-RGB 360</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">XFX RX
+                                    9060XT</span></li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Asus B650E MAX GAMING
+                                    WIFI W</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">Corsair Vengence 32GB</span>
+                            </li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">Samsung 990 Pro 1TB</span>
+                            </li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val">Lian Li Vector V100R</span>
+                            </li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">MSI A850GL</span></li>
                         </ul>
-                        <button class="cmd-btn cmd-btn-secondary w-full" onclick="openPrebuiltModal('The Behemoth ($2,500+)')">> Select Option</button>
+
+                        <!-- INTEL / BLUE -->
+                        <ul class="spec-list team-blue" style="display: none;">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-intel">Intel
+                                    i7-14700k</span></li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">ARCTIC Liquid Freezer
+                                    III Pro A-RGB 360</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-nvidia">Gigabyte RTX
+                                    5060ti 16gb</span></li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">ASRock B760M PG
+                                    Riptide Wifi</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">Silicon Power RGB 32 GB</span>
+                            </li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">AORUS 7300 1 TB</span></li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val">Lian Li LANCOOL 217</span>
+                            </li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">MSI A850GL</span></li>
+
+                        </ul>
+
+                        <button class="cmd-btn cmd-btn-secondary w-full tier-select-btn"
+                            onclick="openPrebuiltModal('Team Red Behemoth')">> Select Option</button>
+                    </div>
+
+                    <!-- 4: The SFF -->
+                    <div class="tier-sys" data-base-name="SFF" data-red-cost="$1400" data-blue-cost="$1400">
+                        <div class="tier-title">The SFF</div>
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <button type="button" class="cmd-btn toggle-btn active"
+                                style="padding: 0.5rem; flex: 1; font-size: 0.8rem;"
+                                onclick="switchTierTeam(this, 'red')">AMD</button>
+                            <button type="button" class="cmd-btn cmd-btn-secondary toggle-btn"
+                                style="padding: 0.5rem; flex: 1; font-size: 0.8rem;"
+                                onclick="switchTierTeam(this, 'blue')">Intel</button>
+                        </div>
+                        <div class="tier-cost">$1300</div>
+
+                        <!-- AMD / RED -->
+                        <ul class="spec-list team-red">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD 7600X</span>
+                            </li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Thermalright Peerless
+                                    Assassin 120 SE</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">Asus RX
+                                    9060XT</span></li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Gigabyte B650M
+                                    Wifi</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">Kingston FURY 16GB</span></li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">Silicon Power 1TB</span></li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val">DIYPC ARGB-M1</span></li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">MSI A750GL</span></li>
+                        </ul>
+
+                        <!-- INTEL / BLUE -->
+                        <ul class="spec-list team-blue" style="display: none;">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-intel">Intel
+                                    245KF</span></li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val">CM Hyper 212</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-nvidia">MSI 5060
+                                    8GB</span></li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">MSI H810I WIFI Mini
+                                    ITX</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">Kingston FURY 16GB</span></li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">Silicon Power 1TB</span></li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val">Silverstone SUGO 14</span>
+                            </li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">MSI A750GL</span></li>
+                        </ul>
+                        <button class="cmd-btn cmd-btn-secondary w-full tier-select-btn"
+                            onclick="openPrebuiltModal('Team Red SFF')">>
+                            Select Option</button>
+                    </div>
+
+                    <!-- 5: The Alchemist -->
+                    <div class="tier-sys">
+                        <div class="tier-title">The Alchemist</div>
+                        <div class="tier-cost">$1000</div>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD 5600GT</span>
+                            </li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Thermalright Peerless
+                                    Assassin 120 SE</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-intel">Intel Arc
+                                    A750</span></li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">ASRock B550 Phantom
+                                    Gaming</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">Silicon Power 16GB</span></li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">Crucial P310 1TB</span></li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val">Lian Li Vector V100R</span>
+                            </li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">Thermaltake Smart 600W</span>
+                            </li>
+                        </ul>
+                        <button class="cmd-btn cmd-btn-secondary w-full" onclick="openPrebuiltModal('The Alchemist')">>
+                            Select Option</button>
+                    </div>
+
+                    <!-- 6: The Triple A -->
+                    <div class="tier-sys">
+                        <div class="tier-title">The Triple A</div>
+                        <div class="tier-cost">$1800</div>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD 9600x</span>
+                            </li>
+                            <li><span class="spec-label">COOLER</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Cooler Master Hyper
+                                    212</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">ASRock 9060xt
+                                    16gb</span></li>
+                            <li><span class="spec-label">MOBO</span><span class="spec-val"
+                                    style="font-size: 0.85rem; max-width: 70%; text-align: right;">Asus TUF B650
+                                    Plus</span></li>
+                            <li><span class="spec-label">MEM</span><span class="spec-val">Crucial Pro 32 GB</span></li>
+                            <li><span class="spec-label">STRG</span><span class="spec-val">Crucial P310 2TB</span></li>
+                            <li><span class="spec-label">CASE</span><span class="spec-val">Fractal Design Pop XL
+                                    Air</span></li>
+                            <li><span class="spec-label">PSU</span><span class="spec-val">Corsair RM850x</span></li>
+                        </ul>
+                        <button class="cmd-btn cmd-btn-secondary w-full" onclick="openPrebuiltModal('The Triple A')">>
+                            Select Option</button>
                     </div>
                 </div>
             </section>
@@ -109,17 +353,20 @@
                 <!-- Custom Setup Wizard -->
                 <form id="commissionForm" action="https://formspree.io/f/xlgpjewn" method="POST" class="sys-form">
                     <input type="hidden" name="_subject" value="New PC Build Request from Knox Rigs (V3)">
-                    
+
                     <!-- Step 1: Use Case -->
                     <div class="step-container active" id="step-1">
-                        <h3 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.5rem;">Step 1: Primary Use Case</h3>
-                        <p style="color: var(--text-dim); margin-bottom: 2rem;">What will you be using this PC for mostly? (Gaming, Editing, etc).</p>
-                        
+                        <h3 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.5rem;">Step 1:
+                            Primary Use Case</h3>
+                        <p style="color: var(--text-dim); margin-bottom: 2rem;">What will you be using this PC for
+                            mostly? (Gaming, Editing, etc).</p>
+
                         <div class="form-group">
                             <label for="useCase">Use Case Details</label>
-                            <textarea id="useCase" name="Primary Use Case" rows="5" placeholder="e.g. Valorant @ 1440p 240hz, Premiere Pro Rendering..."></textarea>
+                            <textarea id="useCase" name="Primary Use Case" rows="5"
+                                placeholder="e.g. Valorant @ 1440p 240hz, Premiere Pro Rendering..."></textarea>
                         </div>
-                        
+
                         <div class="btn-group">
                             <button type="button" class="cmd-btn" onclick="nextStep(2)">Next ></button>
                         </div>
@@ -127,42 +374,49 @@
 
                     <!-- Step 2: Budget -->
                     <div class="step-container" id="step-2">
-                        <h3 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.5rem;">Step 2: Budget</h3>
+                        <h3 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.5rem;">Step 2:
+                            Budget</h3>
                         <p style="color: var(--text-dim); margin-bottom: 2rem;">Total hardware parts budget ($USD).</p>
-                        
+
                         <div class="form-group">
                             <label for="budget">Maximum Budget *</label>
                             <input type="number" id="budget" name="Parts Budget" placeholder="e.g. 1500" min="200">
                         </div>
-                        
+
                         <div class="btn-group">
-                            <button type="button" class="cmd-btn cmd-btn-secondary" onclick="showStep(1)">< Back</button>
-                            <button type="button" class="cmd-btn" onclick="goToStep3()">Next ></button>
+                            <button type="button" class="cmd-btn cmd-btn-secondary" onclick="showStep(1)">
+                                < Back</button>
+                                    <button type="button" class="cmd-btn" onclick="goToStep3()">Next ></button>
                         </div>
                     </div>
 
                     <!-- Step 3: Custom Parts -->
                     <div class="step-container" id="step-3">
                         <input type="hidden" id="baseBuild" name="Selected Build Tier" value="Custom V3 Build">
-                        <h3 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.5rem;">Step 3: Specific Requests</h3>
-                        <p style="color: var(--text-dim); margin-bottom: 2rem;">List specific preferred components (Cases, RGB limits, PCPartPicker links).</p>
-                        
+                        <h3 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.5rem;">Step 3:
+                            Specific Requests</h3>
+                        <p style="color: var(--text-dim); margin-bottom: 2rem;">List specific preferred components
+                            (Cases, RGB limits, PCPartPicker links).</p>
+
                         <div class="form-group">
                             <label for="customParts">Hardware Requests</label>
-                            <textarea id="customParts" name="Custom Parts Requests" rows="5" placeholder="e.g. Needs to be in a Fractal North case." ></textarea>
+                            <textarea id="customParts" name="Custom Parts Requests" rows="5"
+                                placeholder="e.g. Needs to be in a Fractal North case."></textarea>
                         </div>
-                        
+
                         <div class="btn-group">
-                            <button type="button" class="cmd-btn cmd-btn-secondary" onclick="showStep(2)">< Back</button>
-                            <button type="button" class="cmd-btn" onclick="nextStep(4)">Next ></button>
+                            <button type="button" class="cmd-btn cmd-btn-secondary" onclick="showStep(2)">
+                                < Back</button>
+                                    <button type="button" class="cmd-btn" onclick="nextStep(4)">Next ></button>
                         </div>
                     </div>
 
                     <!-- Step 4: Contact -->
                     <div class="step-container" id="step-4">
-                        <h3 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.5rem;">Step 4: Contact Info</h3>
+                        <h3 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.5rem;">Step 4:
+                            Contact Info</h3>
                         <p style="color: var(--text-dim); margin-bottom: 2rem;">Where should we send your quote?</p>
-                        
+
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="Full Name" required placeholder="John Doe">
@@ -175,10 +429,11 @@
                             <label for="phone">Phone Number (Optional)</label>
                             <input type="tel" id="phone" name="Phone Number" placeholder="(555) 555-5555">
                         </div>
-                        
+
                         <div class="btn-group">
-                            <button type="button" class="cmd-btn cmd-btn-secondary" onclick="showStep(3)">< Back</button>
-                            <button type="submit" id="submitBtn" class="cmd-btn">Submit Request</button>
+                            <button type="button" class="cmd-btn cmd-btn-secondary" onclick="showStep(3)">
+                                < Back</button>
+                                    <button type="submit" id="submitBtn" class="cmd-btn">Submit Request</button>
                         </div>
                     </div>
                 </form>
@@ -190,13 +445,14 @@
     <div id="prebuiltModal" class="modal-overlay">
         <div class="modal-content">
             <h3 id="prebuiltModalTitle" style="color: var(--accent-orange); margin-bottom: 1rem;">Selected: [Tier]</h3>
-            <p style="color: var(--text-dim); margin-bottom: 2rem; font-size: 0.85rem;">Just need some quick info to get started.</p>
-            
+            <p style="color: var(--text-dim); margin-bottom: 2rem; font-size: 0.85rem;">Just need some quick info to get
+                started.</p>
+
             <form id="prebuiltForm" action="https://formspree.io/f/xlgpjewn" method="POST" class="sys-form">
                 <input type="hidden" name="_subject" value="New Prebuilt Order from Knox Rigs">
                 <input type="hidden" name="Order Type" value="Prebuilt">
                 <input type="hidden" id="prebuiltTierHidden" name="Selected Prebuilt Tier" value="">
-                
+
                 <div class="form-group">
                     <label for="pb-name">Full Name *</label>
                     <input type="text" id="pb-name" name="Full Name" required>
@@ -209,9 +465,10 @@
                     <label for="pb-phone">Phone Number (Optional)</label>
                     <input type="tel" id="pb-phone" name="Phone Number">
                 </div>
-                
+
                 <div class="btn-group mt-4">
-                    <button type="button" class="cmd-btn cmd-btn-secondary" onclick="closePrebuiltModal()">Cancel</button>
+                    <button type="button" class="cmd-btn cmd-btn-secondary"
+                        onclick="closePrebuiltModal()">Cancel</button>
                     <button type="submit" id="pbSubmitBtn" class="cmd-btn">Submit Request</button>
                 </div>
             </form>
@@ -222,7 +479,8 @@
         <div class="modal-content" style="text-align: center;">
             <div style="font-size: 3rem; color: var(--accent-orange); margin-bottom: 1rem;">// OK</div>
             <h3 style="color: #fff; margin-bottom: 1rem;">Received!</h3>
-            <p style="color: var(--text-dim); margin-bottom: 2rem;">We will get back to you with a quote within 24-48 hours.</p>
+            <p style="color: var(--text-dim); margin-bottom: 2rem;">We will get back to you with a quote within 24-48
+                hours.</p>
             <button class="cmd-btn w-full" onclick="closeModal()">Close</button>
         </div>
     </div>
@@ -230,10 +488,42 @@
     <script src="script.js"></script>
     <script>
         // Commission page specific logic (V3 Override)
+        function switchTierTeam(btn, team) {
+            const tierSys = btn.closest('.tier-sys');
+            const isRed = team === 'red';
+
+            // Toggle active styles on buttons
+            const btns = tierSys.querySelectorAll('.toggle-btn');
+            btns.forEach(b => {
+                b.classList.add('cmd-btn-secondary');
+                b.classList.remove('active');
+            });
+            btn.classList.remove('cmd-btn-secondary');
+            btn.classList.add('active');
+
+            const redList = tierSys.querySelector('.team-red');
+            const blueList = tierSys.querySelector('.team-blue');
+            const baseName = tierSys.getAttribute('data-base-name');
+            const costEl = tierSys.querySelector('.tier-cost');
+            const selectBtn = tierSys.querySelector('.tier-select-btn');
+
+            if (isRed) {
+                redList.style.display = 'block';
+                blueList.style.display = 'none';
+                costEl.innerText = tierSys.getAttribute('data-red-cost');
+                selectBtn.setAttribute('onclick', "openPrebuiltModal('Team Red " + baseName + "')");
+            } else {
+                redList.style.display = 'none';
+                blueList.style.display = 'block';
+                costEl.innerText = tierSys.getAttribute('data-blue-cost');
+                selectBtn.setAttribute('onclick', "openPrebuiltModal('Team Blue " + baseName + "')");
+            }
+        }
+
         function showStep(stepNum) {
             document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
             const targetStep = document.getElementById('step-' + stepNum);
-            if(targetStep) targetStep.classList.add('active');
+            if (targetStep) targetStep.classList.add('active');
         }
 
         function nextStep(stepNum) {
@@ -275,7 +565,7 @@
 
                 const data = new FormData(pbForm);
                 try {
-                    const response = await fetch(pbForm.action, { method: pbForm.method, body: data, headers: { 'Accept': 'application/json' }});
+                    const response = await fetch(pbForm.action, { method: pbForm.method, body: data, headers: { 'Accept': 'application/json' } });
                     if (response.ok) {
                         pbForm.reset();
                         closePrebuiltModal();
@@ -301,7 +591,7 @@
 
                 const data = new FormData(form);
                 try {
-                    const response = await fetch(form.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' }});
+                    const response = await fetch(form.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' } });
                     if (response.ok) {
                         form.reset();
                         document.getElementById('successModal').classList.add('active');
@@ -316,4 +606,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -4,20 +4,20 @@
     --bg-base: #0a0a0c;
     --bg-surface: #111116;
     --bg-surface-light: #181820;
-    
+
     --accent-orange: #ff4d00;
     --accent-orange-dim: rgba(255, 77, 0, 0.2);
-    
+
     --text-primary: #ffffff;
     --text-dim: #8b9bb4;
-    
+
     --color-nvidia: #76b900;
     --color-amd: #ff003c;
     --color-intel: #0071c5;
-    
+
     --font-ui: 'Fira Code', monospace;
     --font-heading: 'Oswald', sans-serif;
-    
+
     --border-color: rgba(255, 255, 255, 0.15);
     --border-action: rgba(255, 77, 0, 0.8);
 }
@@ -34,12 +34,16 @@ body {
     font-family: var(--font-ui);
     line-height: 1.5;
     height: 100vh;
-    overflow: hidden; /* No scrolling allowed */
+    overflow: hidden;
+    /* No scrolling allowed */
     display: flex;
 }
 
 /* Base Typo */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-heading);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -50,6 +54,7 @@ a {
     text-decoration: none;
     transition: 0.2s ease;
 }
+
 a:hover {
     color: #fff;
     text-shadow: 0 0 10px var(--accent-orange);
@@ -62,11 +67,14 @@ a:hover {
 /* Particles Background */
 #particles-bg {
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.3; /* Keep it subtle behind the harsh UI */
+    opacity: 0.3;
+    /* Keep it subtle behind the harsh UI */
 }
 
 /* =========================================
@@ -90,11 +98,14 @@ a:hover {
     padding: 2rem;
     position: relative;
 }
+
 .sidebar::after {
     content: '';
     position: absolute;
-    top: 10%; right: -1px;
-    width: 2px; height: 80%;
+    top: 10%;
+    right: -1px;
+    width: 2px;
+    height: 80%;
     background: var(--accent-orange);
     opacity: 0.3;
 }
@@ -102,6 +113,7 @@ a:hover {
 .brand {
     margin-bottom: 4rem;
 }
+
 .mobile-select {
     display: none;
     width: 100%;
@@ -123,14 +135,19 @@ a:hover {
     background-position: right 1rem center;
     background-size: 1rem;
 }
+
 .mobile-select:focus {
     box-shadow: 0 0 10px rgba(255, 77, 0, 0.2);
 }
+
 .brand h1 {
     font-size: 2rem;
     color: #fff;
 }
-.brand span { color: var(--accent-orange); }
+
+.brand span {
+    color: var(--accent-orange);
+}
 
 .nav-menu {
     list-style: none;
@@ -138,6 +155,7 @@ a:hover {
     flex-direction: column;
     gap: 1rem;
 }
+
 .nav-item {
     padding: 1rem;
     border: 1px solid transparent;
@@ -150,24 +168,35 @@ a:hover {
     align-items: center;
     gap: 1rem;
 }
+
 .nav-item::before {
     content: '>';
     color: var(--accent-orange);
     opacity: 0;
     transition: 0.2s ease;
 }
+
 .nav-item:hover {
     border-color: var(--border-color);
     background: var(--bg-surface-light);
     color: #fff;
 }
-.nav-item:hover::before { opacity: 1; transform: translateX(5px); }
+
+.nav-item:hover::before {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
 .nav-item.active {
     border-color: var(--border-action);
     background: var(--accent-orange-dim);
     color: #fff;
 }
-.nav-item.active::before { opacity: 1; transform: translateX(5px); }
+
+.nav-item.active::before {
+    opacity: 1;
+    transform: translateX(5px);
+}
 
 .sidebar-footer {
     margin-top: auto;
@@ -182,16 +211,25 @@ a:hover {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     position: relative;
-    overflow-y: auto; /* Allow scrolling ONLY inside the main stage if needed */
+    overflow-y: auto;
+    /* Allow scrolling ONLY inside the main stage if needed */
     padding: 3rem;
     display: flex;
     flex-direction: column;
 }
 
 /* Hide scrollbar for clean look */
-.main-stage::-webkit-scrollbar { width: 4px; }
-.main-stage::-webkit-scrollbar-track { background: transparent; }
-.main-stage::-webkit-scrollbar-thumb { background: var(--accent-orange); }
+.main-stage::-webkit-scrollbar {
+    width: 4px;
+}
+
+.main-stage::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-stage::-webkit-scrollbar-thumb {
+    background: var(--accent-orange);
+}
 
 /* View Management */
 .view-section {
@@ -201,13 +239,23 @@ a:hover {
     margin: 0 auto;
     animation: bootUp 0.3s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
 }
+
 .view-section.active {
     display: block;
 }
 
 @keyframes bootUp {
-    from { opacity: 0; transform: translateY(10px) scale(0.98); filter: blur(4px); }
-    to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
 }
 
 /* System Headers */
@@ -219,11 +267,16 @@ a:hover {
     align-items: flex-end;
     gap: 1rem;
 }
-.sys-header h2 { font-size: 3rem; line-height: 1; }
+
+.sys-header h2 {
+    font-size: 3rem;
+    line-height: 1;
+}
+
 .sys-header .sys-status {
     color: var(--text-dim);
     font-size: 0.85rem;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     padding: 0.25rem 0.75rem;
     border: 1px solid var(--border-color);
 }
@@ -232,6 +285,7 @@ a:hover {
 .hero-content {
     margin-top: 10vh;
 }
+
 .hero-title {
     font-size: clamp(2.5rem, 6vw, 6rem);
     line-height: 1.1;
@@ -239,6 +293,7 @@ a:hover {
     color: #fff;
     text-transform: uppercase;
 }
+
 .hero-desc {
     font-size: 1.25rem;
     color: var(--text-dim);
@@ -261,13 +316,16 @@ a:hover {
     transition: 0.2s ease;
     box-shadow: inset 0 0 0 0 var(--accent-orange);
 }
+
 .cmd-btn:hover {
     box-shadow: inset 300px 0 0 0 var(--accent-orange);
     color: var(--bg-base);
 }
+
 .cmd-btn-secondary {
     border-color: var(--border-color);
 }
+
 .cmd-btn-secondary:hover {
     box-shadow: inset 300px 0 0 0 #fff;
     border-color: #fff;
@@ -289,17 +347,31 @@ a:hover {
     letter-spacing: 1px;
     margin-bottom: 2rem;
 }
+
 .pulse-dot {
-    width: 8px; height: 8px;
+    width: 8px;
+    height: 8px;
     background: var(--accent-orange);
     border-radius: 50%;
     box-shadow: 0 0 10px var(--accent-orange);
     animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 0, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 77, 0, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 0, 0); }
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 77, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 77, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 77, 0, 0);
+    }
 }
 
 .typewriter-cursor {
@@ -311,7 +383,12 @@ a:hover {
     vertical-align: text-bottom;
     margin-left: 5px;
 }
-@keyframes blink { 50% { opacity: 0; } }
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
 
 
 /* Pricing Grid */
@@ -321,17 +398,25 @@ a:hover {
     gap: 1.5rem;
     margin-bottom: 3rem;
 }
+
 .sys-card {
     border: 1px solid var(--border-color);
     background: var(--bg-surface-light);
     padding: 2rem;
     transition: 0.2s ease;
 }
+
 .sys-card:hover {
     border-color: var(--accent-orange);
     transform: translateY(-5px);
 }
-.sys-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; }
+
+.sys-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
 .sys-price {
     font-family: var(--font-heading);
     font-size: 2.5rem;
@@ -339,13 +424,24 @@ a:hover {
     margin-bottom: 1rem;
     line-height: 1;
 }
-.sys-desc { font-size: 0.85rem; color: var(--text-dim); }
+
+.sys-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
 .total-calc {
     border: 1px dashed var(--accent-orange);
     padding: 2rem;
     background: var(--accent-orange-dim);
     margin-top: 2rem;
     word-break: break-word;
+    font-size: 1.5rem;
+}
+
+.total-calc h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
 }
 
 /* Team Grid */
@@ -354,6 +450,7 @@ a:hover {
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
 }
+
 .team-card {
     border: 1px solid var(--border-color);
     padding: 1.5rem;
@@ -361,6 +458,7 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
+
 .team-header {
     display: flex;
     justify-content: space-between;
@@ -369,26 +467,56 @@ a:hover {
     padding-bottom: 1rem;
     margin-bottom: 1rem;
 }
-.team-name { font-size: 1.5rem; color: var(--accent-orange); }
-.team-role { font-size: 0.75rem; color: var(--text-dim); padding: 0.25rem 0.5rem; background: rgba(255,255,255,0.05); }
+
+.team-name {
+    font-size: 1.5rem;
+    color: var(--accent-orange);
+}
+
+.team-role {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+}
 
 .spec-list {
     list-style: none;
     font-size: 0.85rem;
 }
+
 .spec-list li {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px dashed rgba(255,255,255,0.05);
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
 }
-.spec-label { color: var(--text-dim); }
-.spec-val { color: #fff; font-weight: 600; text-align: right; }
 
-.target-nvidia { color: var(--color-nvidia) !important; text-shadow: 0 0 5px rgba(118, 185, 0, 0.4); }
-.target-amd { color: var(--color-amd) !important; text-shadow: 0 0 5px rgba(255, 0, 60, 0.4); }
-.target-intel { color: var(--color-intel) !important; text-shadow: 0 0 5px rgba(0, 113, 197, 0.4); }
+.spec-label {
+    color: var(--text-dim);
+}
+
+.spec-val {
+    color: #fff;
+    font-weight: 600;
+    text-align: right;
+}
+
+.target-nvidia {
+    color: var(--color-nvidia) !important;
+    text-shadow: 0 0 5px rgba(118, 185, 0, 0.4);
+}
+
+.target-amd {
+    color: var(--color-amd) !important;
+    text-shadow: 0 0 5px rgba(255, 0, 60, 0.4);
+}
+
+.target-intel {
+    color: var(--color-intel) !important;
+    text-shadow: 0 0 5px rgba(0, 113, 197, 0.4);
+}
 
 /* Start Build View (Tiers) */
 .tier-wrapper {
@@ -397,6 +525,7 @@ a:hover {
     gap: 1rem;
     margin-bottom: 3rem;
 }
+
 .tier-sys {
     border: 1px solid var(--border-color);
     background: var(--bg-surface-light);
@@ -404,39 +533,61 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
+
 .tier-sys.recommended {
     border-color: var(--accent-orange);
     box-shadow: inset 0 0 20px rgba(255, 77, 0, 0.1);
 }
-.tier-title { font-size: 1.5rem; margin-bottom: 0.25rem; }
-.tier-cost { color: var(--accent-orange); font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1.5rem; }
-.tier-sys .spec-list { margin-bottom: 1.5rem; flex-grow: 1; }
+
+.tier-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.tier-cost {
+    color: var(--accent-orange);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tier-sys .spec-list {
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
 
 .custom-box {
     border: 1px solid var(--border-color);
     padding: 2rem;
     text-align: center;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 /* Modal Core (Prebuilt Checkout) */
 .modal-overlay {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(10, 10, 12, 0.9);
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 1000;
 }
-.modal-overlay.active { display: flex; }
+
+.modal-overlay.active {
+    display: flex;
+}
+
 .modal-content {
     background: var(--bg-surface);
     border: 1px solid var(--accent-orange);
     padding: 3rem;
     width: 100%;
     max-width: 500px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
 }
 
 /* Forms (Configurator & Modals) */
@@ -445,17 +596,20 @@ a:hover {
     flex-direction: column;
     gap: 1.5rem;
 }
+
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
+
 .form-group label {
     font-size: 0.85rem;
     color: var(--accent-orange);
     text-transform: uppercase;
 }
-.form-group input, 
+
+.form-group input,
 .form-group textarea,
 .form-group select {
     background: var(--bg-base);
@@ -466,7 +620,8 @@ a:hover {
     outline: none;
     transition: 0.2s ease;
 }
-.form-group input:focus, 
+
+.form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--accent-orange);
     box-shadow: inset 0 0 10px rgba(255, 77, 0, 0.1);
@@ -479,6 +634,7 @@ a:hover {
     justify-content: center;
     padding: 2rem;
 }
+
 .configurator-window {
     width: 100%;
     max-width: 800px;
@@ -487,8 +643,9 @@ a:hover {
     height: 80vh;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
 }
+
 .config-header {
     padding: 1.5rem 2rem;
     border-bottom: 1px solid var(--border-color);
@@ -497,6 +654,7 @@ a:hover {
     align-items: center;
     background: var(--bg-base);
 }
+
 .config-body {
     padding: 3rem;
     overflow-y: auto;
@@ -507,47 +665,128 @@ a:hover {
     display: none;
     animation: bootUp 0.3s ease forwards;
 }
-.step-container.active { display: block; }
-.btn-group { display: flex; gap: 1rem; margin-top: 2rem; }
-.btn-group button { flex: 1; }
+
+.step-container.active {
+    display: block;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-group button {
+    flex: 1;
+}
 
 .return-link {
     color: var(--text-dim);
     font-size: 0.85rem;
 }
-.return-link:hover { color: var(--accent-orange); }
+
+.return-link:hover {
+    color: var(--accent-orange);
+}
 
 @media (max-width: 1024px) {
-    .app-container { grid-template-columns: 200px 1fr; }
-    .sys-grid { grid-template-columns: 1fr; }
-    .tier-wrapper { grid-template-columns: 1fr; }
+    .app-container {
+        grid-template-columns: 200px 1fr;
+    }
+
+    .sys-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tier-wrapper {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
-    body { height: auto; overflow: auto; display: block; }
-    .app-container { display: block; padding: 0; min-height: 100vh; }
-    .sidebar, .config-sidebar { width: 100%; border-bottom: 2px solid var(--border-color); border-right: none; padding: 1.5rem; }
-    .main-stage, .config-main { min-height: calc(100vh - 200px); border: none; padding: 1.5rem 1rem; }
-    .team-grid { grid-template-columns: 1fr; }
-    
-    .brand { margin-bottom: 0; }
-    .nav-menu { display: none; }
-    .sidebar-footer { display: none; }
-    .mobile-select { display: block; margin-top: 1rem; margin-bottom: 0; }
-    
+    body {
+        height: auto;
+        overflow: auto;
+        display: block;
+    }
+
+    .app-container {
+        display: block;
+        padding: 0;
+        min-height: 100vh;
+    }
+
+    .sidebar,
+    .config-sidebar {
+        width: 100%;
+        border-bottom: 2px solid var(--border-color);
+        border-right: none;
+        padding: 1.5rem;
+    }
+
+    .main-stage,
+    .config-main {
+        min-height: calc(100vh - 200px);
+        border: none;
+        padding: 1.5rem 1rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand {
+        margin-bottom: 0;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .mobile-select {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 0;
+    }
+
     /* Configurator fixes */
-    .commission-page { align-items: flex-start; padding: 0; }
+    .commission-page {
+        align-items: flex-start;
+        padding: 0;
+    }
+
     .configurator-window {
         height: auto;
         border: none;
         border-top: 1px solid var(--accent-orange);
         box-shadow: none;
     }
-    .config-header { padding: 1rem; }
-    .config-body { padding: 1.5rem 1rem; }
-    .btn-group { flex-direction: column; }
-    .cmd-btn { width: 100%; text-align: center; }
-    
+
+    .config-header {
+        padding: 1rem;
+    }
+
+    .config-body {
+        padding: 1.5rem 1rem;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .cmd-btn {
+        width: 100%;
+        text-align: center;
+    }
+
     /* Better modal on phone */
-    .modal-content { padding: 1.5rem; border-radius: 4px; border: 1px solid var(--accent-orange); }
+    .modal-content {
+        padding: 1.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--accent-orange);
+    }
 }
