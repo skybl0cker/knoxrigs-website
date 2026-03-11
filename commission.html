@@ -31,18 +31,23 @@
         
         <!-- SIDEBAR NAVIGATION -->
         <aside class="config-sidebar">
-            <div class="brand">
-                <h1>BUILD<span>_MENU</span></h1>
-                <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem;">Select Your Path</p>
+            <div class="sidebar-top">
+                <div class="brand">
+                    <h1>BUILD<span>_MENU</span></h1>
+                    <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem;">Select Your Path</p>
+                </div>
+                <button class="mobile-toggle" onclick="toggleNav()">MENU</button>
             </div>
 
-            <ul class="nav-menu">
-                <li class="nav-item active" onclick="switchView('prebuilts', this)">> Select Prebuilt Base</li>
-                <li class="nav-item" onclick="switchView('custom', this)">> Start Custom Build</li>
-            </ul>
+            <div class="nav-container" id="mobile-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item active" onclick="switchView('prebuilts', this)">> Select Prebuilt Base</li>
+                    <li class="nav-item" onclick="switchView('custom', this)">> Start Custom Build</li>
+                </ul>
 
-            <div class="sidebar-footer" style="margin-top: auto;">
-                <a href="index.html" class="return-link" style="display: block; margin-top: 1rem;">< Return to Home</a>
+                <div class="sidebar-footer" style="margin-top: auto;">
+                    <a href="index.html" class="return-link" style="display: block; margin-top: 1rem;">< Return to Home</a>
+                </div>
             </div>
         </aside>
 

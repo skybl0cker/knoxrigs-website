@@ -99,8 +99,35 @@ a:hover {
     opacity: 0.3;
 }
 
-.brand {
+.sidebar-top {
     margin-bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.brand {
+    margin-bottom: 0;
+}
+.mobile-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--accent-orange);
+    color: var(--accent-orange);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+.mobile-toggle:hover {
+    background: var(--accent-orange-dim);
+    color: #fff;
+}
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 .brand h1 {
     font-size: 2rem;
@@ -501,7 +528,16 @@ a:hover {
 @media (max-width: 768px) {
     body { height: auto; overflow: auto; display: block; }
     .app-container { display: block; padding: 0; min-height: 100vh; }
-    .sidebar { width: 100%; border-bottom: 2px solid var(--accent-orange); border-right: none; padding: 1.5rem; }
-    .main-stage { min-height: calc(100vh - 300px); border: none; padding: 1.5rem; }
+    .sidebar, .config-sidebar { width: 100%; border-bottom: 2px solid var(--accent-orange); border-right: none; padding: 1.5rem; }
+    .main-stage, .config-main { min-height: calc(100vh - 300px); border: none; padding: 1.5rem; }
     .team-grid { grid-template-columns: 1fr; }
+    
+    .sidebar-top { margin-bottom: 0; }
+    .mobile-toggle { display: block; }
+    .nav-container {
+        display: none;
+        margin-top: 1.5rem;
+        animation: bootUp 0.3s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+    }
+    .nav-container.open { display: flex; }
 }

@@ -96,6 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeWriter, 800);
     }
 
+    // --- Mobile Nav Toggle ---
+    window.toggleNav = function() {
+        const nav = document.getElementById('mobile-nav');
+        if (nav) {
+            nav.classList.toggle('open');
+        }
+    };
+
     // --- V3 OS View Switching Logic ---
     window.switchView = function(viewId, element) {
         if (!element) return;
@@ -115,6 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = document.getElementById('view-' + viewId);
         if (target) {
             target.classList.add('active');
+        }
+
+        // Close mobile nav if it's open
+        const mobileNav = document.getElementById('mobile-nav');
+        if (mobileNav && mobileNav.classList.contains('open')) {
+            mobileNav.classList.remove('open');
         }
     };
 });
