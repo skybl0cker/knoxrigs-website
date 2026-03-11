@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KNOX // RIGS: COMMAND CENTER</title>
+    <title>KNOX//RIGS</title>
     <meta name="description" content="Premium custom PC building service by Cash and Jackson.">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <canvas id="particles-bg"></canvas>
 
     <div class="app-container">
-        
+
         <!-- SIDEBAR NAVIGATION -->
         <aside class="sidebar">
             <div class="brand">
@@ -23,7 +25,8 @@
                 <li class="nav-item active" onclick="switchView('home', this)">Overview</li>
                 <li class="nav-item" onclick="switchView('pricing', this)">Pricing Model</li>
                 <li class="nav-item" onclick="switchView('team', this)">Meet the Team</li>
-                <li class="nav-item" style="color: var(--accent-orange); border-color: var(--accent-orange);" onclick="window.location.href='commission.html'">Start Your Build</li>
+                <li class="nav-item" style="color: var(--accent-orange); border-color: var(--accent-orange);"
+                    onclick="window.location.href='commission.html'">Start Your Build</li>
             </ul>
 
             <div class="sidebar-footer">
@@ -34,23 +37,26 @@
 
         <!-- MAIN STAGE -->
         <main class="main-stage">
-            
+
             <!-- VIEW: HOME (OVERVIEW) -->
             <section id="view-home" class="view-section active">
                 <div class="sys-header">
                     <h2>Overview</h2>
                 </div>
-                
+
                 <div class="hero-content">
                     <div class="badge slide-in">
                         <span class="pulse-dot"></span>
                         Now accepting commissions
                     </div>
                     <h2 class="hero-title glow-text" id="hero-title" style="min-height: 2.2em;"></h2>
-                    <p class="hero-desc">Elite custom rigs built exactly how you want. No corners cut, zero bloatware, optimal thermals. We treat every rig like it's our daily driver.</p>
-                    
+                    <p class="hero-desc">Elite custom rigs built exactly how you want. No corners cut, zero bloatware,
+                        optimal thermals. We treat every rig like it's our daily driver.</p>
+
                     <button class="cmd-btn" onclick="window.location.href='commission.html'">> START YOUR BUILD</button>
-                    <button class="cmd-btn cmd-btn-secondary" onclick="document.querySelectorAll('.nav-item')[1].click()" style="margin-left: 1rem;">> VIEW PRICING</button>
+                    <button class="cmd-btn cmd-btn-secondary"
+                        onclick="document.querySelectorAll('.nav-item')[1].click()" style="margin-left: 1rem;">> VIEW
+                        PRICING</button>
                 </div>
             </section>
 
@@ -64,12 +70,14 @@
                     <div class="sys-card">
                         <h3>Commission Fee</h3>
                         <div class="sys-price">$50</div>
-                        <p class="sys-desc">Flat rate for assembly, cable management, stress testing, and OS installation.</p>
+                        <p class="sys-desc">Flat rate for assembly, cable management, stress testing, and OS
+                            installation.</p>
                     </div>
                     <div class="sys-card">
                         <h3>Parts Cost</h3>
                         <div class="sys-price">Retail</div>
-                        <p class="sys-desc">You pay exactly what the components cost. Zero upcharging or hidden fees.</p>
+                        <p class="sys-desc">You pay exactly what the components cost. Zero upcharging or hidden fees.
+                        </p>
                     </div>
                     <div class="sys-card">
                         <h3>Shipping</h3>
@@ -80,7 +88,8 @@
 
                 <div class="total-calc">
                     <h3 style="color: var(--bg-surface); margin-bottom: 0.5rem;">Total Cost Breakdown =</h3>
-                    <p style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff;">$50 + Cost of Parts + Shipping</p>
+                    <p style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff;">$50 + Cost of Parts +
+                        Shipping</p>
                 </div>
             </section>
 
@@ -90,7 +99,8 @@
                     <h2>The Team</h2>
                 </div>
 
-                <p style="color: var(--text-dim); margin-bottom: 2rem;">Robotics engineers turned elite PC builders. We bring competition-grade attention to detail into every chassis.</p>
+                <p style="color: var(--text-dim); margin-bottom: 2rem;">Robotics engineers turned elite PC builders. We
+                    bring competition-grade attention to detail into every chassis.</p>
 
                 <div class="team-grid">
                     <!-- CASH -->
@@ -101,8 +111,10 @@
                         </div>
                         <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1rem;">Personal Rig:</p>
                         <ul class="spec-list">
-                            <li><span class="spec-label">GPU</span><span class="spec-val target-nvidia">NVIDIA RTX 4070</span></li>
-                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 7 5800X</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-nvidia">NVIDIA RTX
+                                    4070</span></li>
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 7
+                                    5800X</span></li>
                             <li><span class="spec-label">RAM</span><span class="spec-val">32GB DDR4</span></li>
                         </ul>
                     </div>
@@ -115,8 +127,10 @@
                         </div>
                         <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1rem;">Personal Rig:</p>
                         <ul class="spec-list">
-                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">AMD RX 6700</span></li>
-                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 5 5600</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">AMD RX 6700</span>
+                            </li>
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 5
+                                    5600</span></li>
                             <li><span class="spec-label">RAM</span><span class="spec-val">16GB DDR4</span></li>
                         </ul>
                     </div>
@@ -129,8 +143,10 @@
                         </div>
                         <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1rem;">Personal Rig:</p>
                         <ul class="spec-list">
-                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">Radeon 9070 XT</span></li>
-                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 9 7900X</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">Radeon 9070
+                                    XT</span></li>
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 9
+                                    7900X</span></li>
                             <li><span class="spec-label">RAM</span><span class="spec-val">32GB DDR5</span></li>
                         </ul>
                     </div>
@@ -143,8 +159,10 @@
                         </div>
                         <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1rem;">Personal Rig:</p>
                         <ul class="spec-list">
-                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">Radeon RX 7800 XT</span></li>
-                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 5 7600X</span></li>
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">Radeon RX 7800
+                                    XT</span></li>
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 5
+                                    7600X</span></li>
                             <li><span class="spec-label">RAM</span><span class="spec-val">32GB DDR5</span></li>
                         </ul>
                     </div>
@@ -159,4 +177,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
