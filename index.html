@@ -1,224 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knox Rigs</title>
-    <meta name="description"
-        content="Premium custom PC building service by Cash and Jackson. Transparent pricing: $50 commission + parts + shipping.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;900&display=swap"
-        rel="stylesheet">
+    <title>KNOX // RIGS: COMMAND CENTER</title>
+    <meta name="description" content="Premium custom PC building service by Cash and Jackson.">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <nav class="navbar glass-nav">
-        <div class="logo">
-            Knox<span>Rigs</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#about">Our Story</a></li>
-            <li><a href="commission.html" class="btn-primary btn-small">Get Started</a></li>
-        </ul>
-        <div class="mobile-menu-btn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-        </div>
-    </nav>
+    <canvas id="particles-bg"></canvas>
 
-    <header class="hero" id="home">
-        <div class="hero-glow"></div>
-        <div class="hero-content reveal">
-            <div class="badge">
-                <span class="pulse-dot"></span>
-                Now accepting commissions
-            </div>
-            <h1 class="glow-text">Let's Build You<br>Something Sick.</h1>
-            <p>Elite custom rigs by Cash and Jackson, built exactly how you want.</p>
-            <div class="hero-buttons">
-                <a href="#pricing" class="btn-primary">View Pricing Model</a>
-                <a href="#about" class="btn-secondary">Meet the Builders</a>
-            </div>
-        </div>
-    </header>
-
-    <section class="pricing" id="pricing">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <h2 class="section-title">No Hidden Fees. <span>Ever.</span></h2>
-                <p class="section-subtitle">We don't upcharge parts. We charge a flat fee to put it all together, cable manage it like pros, and stress-test it.</p>
+    <div class="app-container">
+        
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="sidebar">
+            <div class="brand">
+                <h1>KNOX<span>RIGS</span></h1>
+                <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem;">Custom PC Builders</p>
             </div>
 
-            <div class="pricing-cards reveal">
-                <div class="price-card glass-panel hover-glow">
-                    <div class="price-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                        </svg>
+            <ul class="nav-menu">
+                <li class="nav-item active" onclick="switchView('home', this)">Overview</li>
+                <li class="nav-item" onclick="switchView('pricing', this)">Pricing Model</li>
+                <li class="nav-item" onclick="switchView('team', this)">Meet the Team</li>
+                <li class="nav-item" style="color: var(--accent-orange); border-color: var(--accent-orange);" onclick="window.location.href='commission.html'">Start Your Build</li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <p>Status: Accepting Commissions</p>
+                <p>&copy; 2026 Knox Rigs</p>
+            </div>
+        </aside>
+
+        <!-- MAIN STAGE -->
+        <main class="main-stage">
+            
+            <!-- VIEW: HOME (OVERVIEW) -->
+            <section id="view-home" class="view-section active">
+                <div class="sys-header">
+                    <h2>Overview</h2>
+                </div>
+                
+                <div class="hero-content">
+                    <div class="badge slide-in">
+                        <span class="pulse-dot"></span>
+                        Now accepting commissions
                     </div>
-                    <h3>Commission Fee</h3>
-                    <div class="price-amount">$50<span>flat</span></div>
-                    <p>Our flat rate for assembly, cable management, and stress testing.</p>
+                    <h2 class="hero-title glow-text" id="hero-title" style="min-height: 2.2em;"></h2>
+                    <p class="hero-desc">Elite custom rigs built exactly how you want. No corners cut, zero bloatware, optimal thermals. We treat every rig like it's our daily driver.</p>
+                    
+                    <button class="cmd-btn" onclick="window.location.href='commission.html'">> START YOUR BUILD</button>
+                    <button class="cmd-btn cmd-btn-secondary" onclick="document.querySelectorAll('.nav-item')[1].click()" style="margin-left: 1rem;">> VIEW PRICING</button>
+                </div>
+            </section>
+
+            <!-- VIEW: PRICING -->
+            <section id="view-pricing" class="view-section">
+                <div class="sys-header">
+                    <h2>Pricing Model</h2>
                 </div>
 
-                <div class="pricing-operator">+</div>
-
-                <div class="price-card glass-panel hover-glow">
-                    <div class="price-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                            <polyline points="2 17 12 22 22 17" />
-                            <polyline points="2 12 12 17 22 12" />
-                        </svg>
+                <div class="sys-grid">
+                    <div class="sys-card">
+                        <h3>Commission Fee</h3>
+                        <div class="sys-price">$50</div>
+                        <p class="sys-desc">Flat rate for assembly, cable management, stress testing, and OS installation.</p>
                     </div>
-                    <h3>Parts Cost</h3>
-                    <div class="price-amount">Retail<span>cost</span></div>
-                    <p>You pay exactly what the components cost. We'll help you pick the perfect list for your budget.
-                    </p>
-                </div>
-
-                <div class="pricing-operator">+</div>
-
-                <div class="price-card glass-panel hover-glow">
-                    <div class="price-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="1" y="3" width="15" height="13"></rect>
-                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                        </svg>
+                    <div class="sys-card">
+                        <h3>Parts Cost</h3>
+                        <div class="sys-price">Retail</div>
+                        <p class="sys-desc">You pay exactly what the components cost. Zero upcharging or hidden fees.</p>
                     </div>
-                    <h3>Shipping</h3>
-                    <div class="price-amount">Variable</div>
-                    <p>If applicable. </p>
-                </div>
-            </div>
-
-            <div class="total-bar glass-panel reveal">
-                <div class="total-content">
-                    <h4>How it breaks down:</h4>
-                    <p><strong>$50 + Cost of Parts + Shipping</strong> = Your custom rig, built to dominate.</p>
-                </div>
-                <a href="commission.html" class="btn-primary">Start Your Build</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Who Are <span>We?</span></h2>
-                <p class="section-subtitle">Robotics nerds turned elite PC builders.</p>
-            </div>
-
-            <div class="about-grid reveal">
-                <div class="about-text glass-panel hover-glow">
-                    <div class="icon-wrap">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                            <rect x="6" y="2" width="12" height="8" rx="2" ry="2"></rect>
-                            <line x1="12" y1="10" x2="12" y2="14"></line>
-                        </svg>
+                    <div class="sys-card">
+                        <h3>Shipping</h3>
+                        <div class="sys-price">Variable</div>
+                        <p class="sys-desc">Calculated exactly based on final rig weight and dimensions.</p>
                     </div>
-                    <h3>Our Roots</h3>
-                    <p>We're <strong>Cash</strong> and <strong>Jackson</strong>. Our obsession with building didn't start
-                        with gaming PCs—it started in competitive robotics.</p>
-                    <p>Spending countless hours wiring, programming, and maintaining custom robots taught us intense
-                        attention to detail and a profound appreciation for perfectly routed cables and solid thermals.</p>
-                    <p>We take that exact same engineering mindset into every PC we build. We don't just put parts in a case; we treat every rig like it's our own, maximizing cooling, aesthetics, and raw frame-pushing power.</p>
                 </div>
 
-                <div class="builder-cards">
-                    <div class="builder-card glass-panel highlight-gradient hover-glow">
-                        <div class="builder-header">
-                            <div class="builder-avatar avatar-cash">C</div>
-                            <div class="builder-info">
-                                <h4>Cash</h4>
-                                <span class="role">Co-Founder & Builder</span>
-                            </div>
+                <div class="total-calc">
+                    <h3 style="color: var(--bg-surface); margin-bottom: 0.5rem;">Total Cost Breakdown =</h3>
+                    <p style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff;">$50 + Cost of Parts + Shipping</p>
+                </div>
+            </section>
+
+            <!-- VIEW: TEAM -->
+            <section id="view-team" class="view-section">
+                <div class="sys-header">
+                    <h2>The Team</h2>
+                </div>
+
+                <p style="color: var(--text-dim); margin-bottom: 2rem;">Robotics engineers turned elite PC builders. We bring competition-grade attention to detail into every chassis.</p>
+
+                <div class="team-grid">
+                    <!-- CASH -->
+                    <div class="team-card">
+                        <div class="team-header">
+                            <span class="team-name">Cash</span>
+                            <span class="team-role">Co-Founder</span>
                         </div>
-                        <div class="builder-specs">
-                            <h5>Personal Daily Driver</h5>
-                            <ul>
-                                <li>
-                                    <span class="spec-label">GPU</span>
-                                    <span class="spec-value highlight-nvidia">NVIDIA RTX 4070</span>
-                                </li>
-                                <li>
-                                    <span class="spec-label">CPU</span>
-                                    <span class="spec-value highlight-amd">AMD Ryzen 7 5800X</span>
-                                </li>
-                                <li>
-                                    <span class="spec-label">RAM</span>
-                                    <span class="spec-value">32GB RAM</span>
-                                </li>
-                            </ul>
-                        </div>
+                        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1rem;">Personal Rig:</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-nvidia">NVIDIA RTX 4070</span></li>
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 7 5800X</span></li>
+                            <li><span class="spec-label">RAM</span><span class="spec-val">32GB DDR4</span></li>
+                        </ul>
                     </div>
 
-                    <div class="builder-card glass-panel highlight-gradient hover-glow">
-                        <div class="builder-header">
-                            <div class="builder-avatar avatar-jackson">J</div>
-                            <div class="builder-info">
-                                <h4>Jackson</h4>
-                                <span class="role">Co-Founder & Builder</span>
-                            </div>
+                    <!-- JACKSON -->
+                    <div class="team-card">
+                        <div class="team-header">
+                            <span class="team-name">Jackson</span>
+                            <span class="team-role">Co-Founder</span>
                         </div>
-                        <div class="builder-specs">
-                            <h5>Personal Daily Driver</h5>
-                            <ul>
-                                <li>
-                                    <span class="spec-label">GPU</span>
-                                    <span class="spec-value highlight-amd">AMD Radeon RX 6700</span>
-                                </li>
-                                <li>
-                                    <span class="spec-label">CPU</span>
-                                    <span class="spec-value highlight-amd">AMD Ryzen 5 5600</span>
-                                </li>
-                                <li>
-                                    <span class="spec-label">RAM</span>
-                                    <span class="spec-value">16GB RAM</span>
-                                </li>
-                            </ul>
+                        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1rem;">Personal Rig:</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">AMD RX 6700</span></li>
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 5 5600</span></li>
+                            <li><span class="spec-label">RAM</span><span class="spec-val">16GB DDR4</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- MICAH -->
+                    <div class="team-card">
+                        <div class="team-header">
+                            <span class="team-name">Micah</span>
+                            <span class="team-role">Builder</span>
                         </div>
+                        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1rem;">Personal Rig:</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">Radeon 9070 XT</span></li>
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 9 7900X</span></li>
+                            <li><span class="spec-label">RAM</span><span class="spec-val">32GB DDR5</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- SAGEN -->
+                    <div class="team-card">
+                        <div class="team-header">
+                            <span class="team-name">Sagen</span>
+                            <span class="team-role">Builder</span>
+                        </div>
+                        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1rem;">Personal Rig:</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">GPU</span><span class="spec-val target-amd">Radeon RX 7800 XT</span></li>
+                            <li><span class="spec-label">CPU</span><span class="spec-val target-amd">AMD Ryzen 5 7600X</span></li>
+                            <li><span class="spec-label">RAM</span><span class="spec-val">32GB DDR5</span></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section class="cta" id="contact">
-        <div class="cta-inner glass-panel reveal">
-            <h2 class="glow-text">Ready to ditch the pre-builts?</h2>
-            <p>Skip the crazy markups and poorly assembled big-box systems. Let's build something extraordinary together.
-            </p>
-            <a href="commission.html" class="btn-primary large-btn">Start Your Custom Build</a>
-        </div>
-    </section>
+        </main>
+    </div>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-logo">
-                Knox<span>Rigs</span>
-            </div>
-            <p>&copy; 2026 Knox Rigs.</p>
-        </div>
-    </footer>
+    <!-- Prebuilt Purchase Modal (Hidden by default, used if they trigger it from within the commission flow or if we add tiers here later) -->
+    <!-- Not strictly needed on index.html anymore since the flow is purely in commission.html, but keeping for architecture completeness -->
 
     <script src="script.js"></script>
 </body>
-
 </html>
