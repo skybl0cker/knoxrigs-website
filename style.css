@@ -233,7 +233,7 @@ a:hover {
     margin-top: 10vh;
 }
 .hero-title {
-    font-size: clamp(3rem, 6vw, 6rem);
+    font-size: clamp(2.5rem, 6vw, 6rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
     color: #fff;
@@ -345,6 +345,7 @@ a:hover {
     padding: 2rem;
     background: var(--accent-orange-dim);
     margin-top: 2rem;
+    word-break: break-word;
 }
 
 /* Team Grid */
@@ -525,12 +526,28 @@ a:hover {
 @media (max-width: 768px) {
     body { height: auto; overflow: auto; display: block; }
     .app-container { display: block; padding: 0; min-height: 100vh; }
-    .sidebar, .config-sidebar { width: 100%; border-bottom: 2px solid var(--accent-orange); border-right: none; padding: 1.5rem; }
-    .main-stage, .config-main { min-height: calc(100vh - 300px); border: none; padding: 1.5rem; }
+    .sidebar, .config-sidebar { width: 100%; border-bottom: 2px solid var(--border-color); border-right: none; padding: 1.5rem; }
+    .main-stage, .config-main { min-height: calc(100vh - 200px); border: none; padding: 1.5rem 1rem; }
     .team-grid { grid-template-columns: 1fr; }
     
     .brand { margin-bottom: 0; }
     .nav-menu { display: none; }
     .sidebar-footer { display: none; }
-    .mobile-select { display: block; }
+    .mobile-select { display: block; margin-top: 1rem; margin-bottom: 0; }
+    
+    /* Configurator fixes */
+    .commission-page { align-items: flex-start; padding: 0; }
+    .configurator-window {
+        height: auto;
+        border: none;
+        border-top: 1px solid var(--accent-orange);
+        box-shadow: none;
+    }
+    .config-header { padding: 1rem; }
+    .config-body { padding: 1.5rem 1rem; }
+    .btn-group { flex-direction: column; }
+    .cmd-btn { width: 100%; text-align: center; }
+    
+    /* Better modal on phone */
+    .modal-content { padding: 1.5rem; border-radius: 4px; border: 1px solid var(--accent-orange); }
 }
