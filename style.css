@@ -99,35 +99,32 @@ a:hover {
     opacity: 0.3;
 }
 
-.sidebar-top {
-    margin-bottom: 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 .brand {
-    margin-bottom: 0;
+    margin-bottom: 4rem;
 }
-.mobile-toggle {
+.mobile-select {
     display: none;
-    background: transparent;
-    border: 1px solid var(--accent-orange);
-    color: var(--accent-orange);
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-family: var(--font-ui);
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: 0.2s ease;
-}
-.mobile-toggle:hover {
-    background: var(--accent-orange-dim);
+    width: 100%;
+    background: var(--bg-surface-light);
     color: #fff;
+    border: 1px solid var(--accent-orange);
+    padding: 1rem;
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    text-transform: uppercase;
+    outline: none;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23ff4d00" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
 }
-.nav-container {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+.mobile-select:focus {
+    box-shadow: 0 0 10px rgba(255, 77, 0, 0.2);
 }
 .brand h1 {
     font-size: 2rem;
@@ -532,12 +529,8 @@ a:hover {
     .main-stage, .config-main { min-height: calc(100vh - 300px); border: none; padding: 1.5rem; }
     .team-grid { grid-template-columns: 1fr; }
     
-    .sidebar-top { margin-bottom: 0; }
-    .mobile-toggle { display: block; }
-    .nav-container {
-        display: none;
-        margin-top: 1.5rem;
-        animation: bootUp 0.3s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
-    }
-    .nav-container.open { display: flex; }
+    .brand { margin-bottom: 0; }
+    .nav-menu { display: none; }
+    .sidebar-footer { display: none; }
+    .mobile-select { display: block; }
 }

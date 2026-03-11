@@ -16,27 +16,29 @@
 
         <!-- SIDEBAR NAVIGATION -->
         <aside class="sidebar">
-            <div class="sidebar-top">
-                <div class="brand">
-                    <h1>KNOX<span>RIGS</span></h1>
-                    <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem;">Custom PC Builders</p>
-                </div>
-                <button class="mobile-toggle" onclick="toggleNav()">MENU</button>
+            <div class="brand">
+                <h1>KNOX<span>RIGS</span></h1>
+                <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem;">Custom PC Builders</p>
             </div>
 
-            <div class="nav-container" id="mobile-nav">
-                <ul class="nav-menu">
-                    <li class="nav-item active" onclick="switchView('home', this)">Overview</li>
-                    <li class="nav-item" onclick="switchView('pricing', this)">Pricing Model</li>
-                    <li class="nav-item" onclick="switchView('team', this)">Meet the Team</li>
-                    <li class="nav-item" style="color: var(--accent-orange); border-color: var(--accent-orange);"
-                        onclick="window.location.href='commission.html'">Start Your Build</li>
-                </ul>
+            <select id="mobile-nav-select" class="mobile-select" onchange="handleMobileNavIndex(this)">
+                <option value="home">Overview</option>
+                <option value="pricing">Pricing Model</option>
+                <option value="team">Meet the Team</option>
+                <option value="commission">Start Your Build</option>
+            </select>
 
-                <div class="sidebar-footer">
-                    <p>Status: Accepting Commissions</p>
-                    <p>&copy; 2026 Knox Rigs</p>
-                </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" onclick="switchView('home', this)">Overview</li>
+                <li class="nav-item" onclick="switchView('pricing', this)">Pricing Model</li>
+                <li class="nav-item" onclick="switchView('team', this)">Meet the Team</li>
+                <li class="nav-item" style="color: var(--accent-orange); border-color: var(--accent-orange);"
+                    onclick="window.location.href='commission.html'">Start Your Build</li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <p>Status: Accepting Commissions</p>
+                <p>&copy; 2026 Knox Rigs</p>
             </div>
         </aside>
 

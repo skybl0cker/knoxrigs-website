@@ -96,11 +96,37 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeWriter, 800);
     }
 
-    // --- Mobile Nav Toggle ---
-    window.toggleNav = function() {
-        const nav = document.getElementById('mobile-nav');
-        if (nav) {
-            nav.classList.toggle('open');
+    // --- Mobile Nav Dropdown Handlers ---
+    window.handleMobileNavIndex = function(selectElement) {
+        const val = selectElement.value;
+        if (val === 'commission') {
+            window.location.href = 'commission.html';
+        } else {
+            const navItems = document.querySelectorAll('.nav-menu .nav-item');
+            let targetItem = null;
+            if (val === 'home') targetItem = navItems[0];
+            if (val === 'pricing') targetItem = navItems[1];
+            if (val === 'team') targetItem = navItems[2];
+            
+            if (targetItem) {
+                switchView(val, targetItem);
+            }
+        }
+    };
+
+    window.handleMobileNavCommission = function(selectElement) {
+        const val = selectElement.value;
+        if (val === 'home') {
+            window.location.href = 'index.html';
+        } else {
+            const navItems = document.querySelectorAll('.nav-menu .nav-item');
+            let targetItem = null;
+            if (val === 'prebuilts') targetItem = navItems[0];
+            if (val === 'custom') targetItem = navItems[1];
+            
+            if (targetItem) {
+                switchView(val, targetItem);
+            }
         }
     };
 
@@ -125,10 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
             target.classList.add('active');
         }
 
-        // Close mobile nav if it's open
-        const mobileNav = document.getElementById('mobile-nav');
-        if (mobileNav && mobileNav.classList.contains('open')) {
-            mobileNav.classList.remove('open');
+        // Sync mobile dropdown
+        const mobileSelect = document.getElementById('mobile-nav-select');
+        if (mobileSelect && mobileSelect.querySelector(`option[value="${viewId}"]`)) {
+            mobileSelect.value = viewId;
         }
     };
 });
