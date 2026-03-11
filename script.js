@@ -99,8 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Mobile Nav Dropdown Handlers ---
     window.handleMobileNavIndex = function(selectElement) {
         const val = selectElement.value;
-        if (val === 'commission') {
-            window.location.href = 'commission.html';
+        if (val === 'commission-prebuilt') {
+            window.location.href = 'commission.html?view=prebuilts';
+        } else if (val === 'commission-custom') {
+            window.location.href = 'commission.html?view=custom';
         } else {
             const navItems = document.querySelectorAll('.nav-menu .nav-item');
             let targetItem = null;
@@ -157,4 +159,24 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileSelect.value = viewId;
         }
     };
+
+    // --- Boot sequence parameter parsing for Commission page ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialView = urlParams.get('view');
+    if (initialView) {
+        // slight delay to let DOM load if it's external script
+        setTimeout(() => {
+            const targetItem = document.querySelector(`.nav-menu .nav-item[onclick*="switchView('${initialView}'"]`);
+            if (targetItem) {
+                switchView(initialView, targetItem);
+            } else {
+                 // Fallback if the click target isn't explicitly defined that way but the view exists
+                 switchView(initialView, document.querySelector('.nav-item')); 
+                 // It will force active on the wrong nav item, but we fix that below.
+                 document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+                 const correctLink = Array.from(document.querySelectorAll('.nav-item')).find(el => el.textContent.toLowerCase().includes(initialView.split('s')[0]));
+                 if(correctLink) correctLink.classList.add('active');
+            }
+        }, 50);
+    }
 });
